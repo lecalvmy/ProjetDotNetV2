@@ -59,20 +59,6 @@ namespace DotNet.Models
         {
             Graph.setSimulation(simulation);
         }
-        /* 
-       public void UpdateField()
-        {
-            int[,] newField = new int[Field.GetLength(0), Field.GetLength(1)];
-            for (int i = 0; i < Field.GetLength(0); i++)
-            {
-                for (int j = 0; j < Field.GetLength(1); j++)
-                {
-                    newField[i, j] = GameOfLifeRule(i, j);
-                }
-            }
-            Field = newField;
-        }
-        */
         #endregion Public Methods
         
     }

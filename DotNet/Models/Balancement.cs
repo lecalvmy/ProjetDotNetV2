@@ -36,15 +36,13 @@ namespace DotNet.Models
             Console.WriteLine("Volatilite: " + volatilite);
             matrixCorrelation = Estimateur.getCorrMatrix(priceList, plageEstimation, dateDebut.AddDays(plageEstimation));
             Estimateur.dispMatrix(matrixCorrelation);
-            //Je pense en fait que la fonction Pricer c'est la fonction doit être un fonction qui renvoit pricedelta et du 
-            //coup c'est la bas qu'on differencie les baskets des vanilles
+
             payoff = payOffaMaturite(option, priceList);
             pricer = new Pricer();
             hedge = new List<decimal>();
             priceOption = new List<double>();
             dates = new List<DateTime>();
 
-            //PricingResults priceDelta = pricer.PriceCall(option, dateDebut, dataFeedProvider.NumberOfDaysPerYear, Convert.ToDouble(priceList[1].PriceList[option.UnderlyingShareIds[0]]), 0.25);
             PricingResults priceDelta = PriceResults(option, priceList[0].PriceList, dateDebut, dataFeedProvider);
             Dictionary<string, double> compo = new Dictionary<string, double> { };
             int i = 0;
@@ -116,6 +114,11 @@ namespace DotNet.Models
         public double payOffaMaturite(IOption option, List<DataFeed> priceList)
         {
             return option.GetPayoff(priceList.Last().PriceList);
+        }
+
+        public void Method()
+        {
+            throw new System.NotImplementedException();
         }
 
         public double Payoff

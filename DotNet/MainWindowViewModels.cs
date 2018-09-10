@@ -99,6 +99,7 @@ namespace DotNet
         }
         private void StartTicker()
         {
+
             if (UniverseVM.Initializer.Option is VanillaCall)
             {
                 VanillaCall vanillaCall = new VanillaCall("Vanilla Call", new Share("AIRBUS GROUP SE", "AIR FP    "), UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
@@ -120,5 +121,9 @@ namespace DotNet
             TickerStarted = false;
         }
 
+        public void Method()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
