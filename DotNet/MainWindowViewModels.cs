@@ -19,6 +19,8 @@ using PricingLibrary.Utilities.MarketDataFeed;
 using System.Windows;
 using DotNet.Visualization;
 using DotNet.ViewModel;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 namespace DotNet
 {
@@ -177,6 +179,9 @@ namespace DotNet
             win.Show();
             TickerStarted = false;
         }
+<<<<<<< HEAD
         #endregion
+=======
+>>>>>>> 5809c44713676fd037550476c154fb7cd5733afb
     }
 }
