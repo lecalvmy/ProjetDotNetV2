@@ -53,12 +53,17 @@ namespace DotNet.Models
                 this.liquidity += Convert.ToDecimal(composition[id]) * priceAsset_t.PriceList[id];
             }
             this.liquidity = this.portfolioValue - this.liquidity;
-        }
+        }  
 
         public void UpdateCompo(Dictionary<string, double> compo)
         {
             this.composition = compo;
         }
         #endregion
+
+        public void Method()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

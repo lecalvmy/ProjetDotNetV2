@@ -117,6 +117,11 @@ namespace DotNet.Models
             return option.GetPayoff(priceList.Last().PriceList);
         }
 
+        public void Method()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public double Payoff
         {
             get { return this.payoff; }

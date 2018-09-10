@@ -117,5 +117,9 @@ namespace DotNet
             TickerStarted = false;
         }
 
+        public void Method()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

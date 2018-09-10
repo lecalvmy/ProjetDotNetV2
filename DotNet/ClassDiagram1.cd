@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="DotNet.MainWindowViewModels">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Property Name="AvailableData" Hidden="true" />
+      <Property Name="AvailableOptions" Hidden="true" />
+      <Property Name="graphTest" Hidden="true" />
+      <Property Name="GraphTest" Hidden="true" />
+      <Method Name="Method" Hidden="true" />
+      <Property Name="SelectedClasses" Hidden="true" />
+      <Property Name="Simulation" Hidden="true" />
+      <Property Name="StartCommand" Hidden="true" />
+      <Field Name="tickerStarted" Hidden="true" />
+      <Property Name="TickerStarted" Hidden="true" />
+      <Property Name="UniverseVM" Hidden="true" />
+      <Property Name="Win" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAAACAAAAAQAABAEAgAQAgEAAAIBAAAIBABAABEAA=</HashCode>
+      <FileName>MainWindowViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.ViewModel.GraphViewModel">
+    <Position X="3.25" Y="1.5" Width="2" />
+    <Members>
+      <Property Name="Graph" Hidden="true" />
+      <Property Name="Name" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQACAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\GraphViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.ViewModel.InitializerViewModel">
+    <Position X="6.75" Y="0.75" Width="2" />
+    <Members>
+      <Property Name="debutTest" Hidden="true" />
+      <Property Name="DebutTest" Hidden="true" />
+      <Property Name="maturity" Hidden="true" />
+      <Property Name="Maturity" Hidden="true" />
+      <Property Name="option" Hidden="true" />
+      <Property Name="Option" Hidden="true" />
+      <Property Name="periodeRebalancement" Hidden="true" />
+      <Property Name="PeriodeRebalancement" Hidden="true" />
+      <Property Name="plageEstimation" Hidden="true" />
+      <Property Name="PlageEstimation" Hidden="true" />
+      <Property Name="strike" Hidden="true" />
+      <Property Name="Strike" Hidden="true" />
+      <Property Name="typeData" Hidden="true" />
+      <Property Name="TypeData" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACEAAAAIAAAQCAAAEAACARgAAgAIAAAAAAA=</HashCode>
+      <FileName>ViewModel\InitializerViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.ViewModel.UniverseViewModel">
+    <Position X="8.75" Y="0.5" Width="2.5" />
+    <Members>
+      <Field Name="graphVM" Hidden="true" />
+      <Property Name="GraphVM" Hidden="true" />
+      <Field Name="initializer" Hidden="true" />
+      <Property Name="Initializer" Hidden="true" />
+      <Property Name="Simulation" Hidden="true" />
+      <Property Name="UnderlyingUniverse" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAAAAAAAAAABAAAAAAIAAAEEAAAEBAAABAA=</HashCode>
+      <FileName>ViewModel\UniverseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.Models.Balancement">
+    <Position X="5.75" Y="6.5" Width="2.25" />
+    <Members>
+      <Field Name="dates" Hidden="true" />
+      <Property Name="Dates" Hidden="true" />
+      <Field Name="hedge" Hidden="true" />
+      <Property Name="Hedge" Hidden="true" />
+      <Field Name="matrixCorrelation" Hidden="true" />
+      <Method Name="Method" Hidden="true" />
+      <Field Name="payoff" Hidden="true" />
+      <Property Name="Payoff" Hidden="true" />
+      <Field Name="portfolio" Hidden="true" />
+      <Field Name="priceOption" Hidden="true" />
+      <Property Name="PriceOption" Hidden="true" />
+      <Field Name="pricer" Hidden="true" />
+      <Field Name="volatilite" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAABAAgAAAAAAAAAAAAgEACAABAAgAAAQBYEAAACAAE=</HashCode>
+      <FileName>Models\Balancement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.Models.BDModel">
+    <Position X="5.75" Y="3.5" Width="2.75" />
+    <Members>
+      <Field Name="connectionString" Hidden="true" />
+      <Method Name="getDBMinDate" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAgAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\BDModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.Models.Estimateur">
+    <Position X="1.5" Y="6.75" Width="2.25" />
+    <Members>
+      <Method Name="computeCorrelationMatrix" Hidden="true" />
+      <Method Name="computeCovarianceMatrix" Hidden="true" />
+      <Method Name="computeLogReturnsMatrix" Hidden="true" />
+      <Method Name="Correlation" Hidden="true" />
+      <Method Name="CutDataFeed" Hidden="true" />
+      <Method Name="dispMatrix" Hidden="true" />
+      <Method Name="matrixWithWeight" Hidden="true" />
+      <Method Name="Volatilite" Hidden="true" />
+      <Method Name="WREmodelingCorr" Hidden="true" />
+      <Method Name="WREmodelingCov" Hidden="true" />
+      <Method Name="WREmodelingLogReturns" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAABEAAAAAAAEQAAAQAAAAAKAIAAAICIAAAABABAA=</HashCode>
+      <FileName>Models\Estimateur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.Models.Graph">
+    <Position X="3.25" Y="4.75" Width="2.75" />
+    <Members>
+      <Method Name="Graph" Hidden="true" />
+      <Property Name="Labels" Hidden="true" />
+      <Property Name="Name" Hidden="true" />
+      <Property Name="SeriesCollection" Hidden="true" />
+      <Property Name="YFormatter" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAQAAAEABEAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Graph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.Models.HistoricalDataFeedProvider">
+    <Position X="0.5" Y="3.75" Width="2.75" />
+    <Members>
+      <Method Name="GetMinDate" Hidden="true" />
+      <Property Name="Name" Hidden="true" />
+      <Property Name="NumberOfDaysPerYear" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAEAAAAACAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\HistoricalDataFeedProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNet.Models.SimulationModel">
+    <Position X="9.25" Y="3.75" Width="2.75" />
+    <Members>
+      <Property Name="Balancement" Hidden="true" />
+      <Property Name="DataFeedProvider" Hidden="true" />
+      <Property Name="DateDebut" Hidden="true" />
+      <Property Name="DateMaturite" Hidden="true" />
+      <Property Name="HedgeMaturity" Hidden="true" />
+      <Property Name="Option" Hidden="true" />
+      <Property Name="PayOffaMaturite" Hidden="true" />
+      <Property Name="PlageEstimation" Hidden="true" />
+      <Property Name="PriceDebut" Hidden="true" />
+      <Property Name="Strike" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAQAAACAAAIAAGACACAAAACgAgAACAIAAAgAAA=</HashCode>
+      <FileName>Models\SimulationModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.Models.Portfolio">
+    <Position X="8.25" Y="5" Width="2.75" />
+    <Members>
+      <Method Name="Method" Hidden="true" />
+      <Method Name="Portfolio" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAgoAgAEQAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Models\Portfolio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
