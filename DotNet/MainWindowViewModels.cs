@@ -167,7 +167,7 @@ namespace DotNet
             }
             else
             {
-                MessageBox.Show("Vanilla Call supports only one share, and basket options supports at least two shares");
+                MessageBox.Show("Vanilla Call supports only one share, and basket options supports at least two shares, previous option was taken");
             }
             universeVM.UnderlyingUniverse = new Universe(universeVM.Simulation, universeVM.GraphVM.Graph);
             if (win != null)

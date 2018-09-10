@@ -37,7 +37,6 @@ namespace DotNet.Models
         {
             var dateDebut = new DateTime(dateTmpDebut.Year, dateTmpDebut.Month, dateTmpDebut.Day);
             var priceList = dataFeedProvider.GetDataFeed(option, dateDebut);
-
             payoff = payOffaMaturite(option, priceList);
             pricer = new Pricer();
             hedge = new List<decimal>();
