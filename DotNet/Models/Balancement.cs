@@ -136,5 +136,13 @@ namespace DotNet.Models
         {
             get { return this.dates; }
         }
+
+        internal SimulationModel Utilise
+        {
+            get => default(SimulationModel);
+            set
+            {
+            }
+        }
     }
 }
