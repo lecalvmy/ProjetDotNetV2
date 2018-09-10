@@ -66,8 +66,9 @@ namespace DotNet.Models
             foreach (DataFeed priceAsset_t in priceList.Skip(1))
             {
 
-                if (DayCount.CountBusinessDays(oldBalancement, priceAsset_t.Date) >= periodeRebalancement)
+                if (DayCount.CountBusinessDays(oldBalancement, priceAsset_t.Date) >= periodeRebalancement || priceAsset_t == priceList.Last())
                 {
+
                     priceDelta = PriceResults(option, priceAsset_t.PriceList, dateDebut, dataFeedProvider);
                     priceOption.Add(priceDelta.Price);
                     //updateCompo

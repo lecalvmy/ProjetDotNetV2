@@ -21,6 +21,7 @@ namespace DotNet
         private Graph selectedClasses;
         private UniverseViewModel universeVM;
         private bool tickerStarted;
+        private IOption option;
         #endregion
 
         #region public fields
@@ -94,18 +95,20 @@ namespace DotNet
         }
         private bool CanStartTicker()
         {
-            /*while(strike == null || maturity == null )
-            {
-                TickerStarted = false;
-            }*/
-            
             return !TickerStarted;
         }
         private void StartTicker()
         {
-            //universeVM = new UniverseViewModel();
-            universeVM.Simulation = new SimulationModel(universeVM.Initializer.Option, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
-            
+            if (UniverseVM.Initializer.Option is VanillaCall)
+            {
+                VanillaCall vanillaCall = new VanillaCall("Vanilla Call", new Share("AIRBUS GROUP SE", "AIR FP    "), UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
+                universeVM.Simulation = new SimulationModel(vanillaCall, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
+            }
+            else
+            {
+                BasketOption basketOption = new BasketOption("Basket Option", new Share[] { new Share("CREDIT AGRICOLE SA", "ACA FP    "), new Share("AIR LIQUIDE SA", "AI FP     "), new Share("AIRBUS GROUP SE", "AIR FP    ") }, new double[] { 0.3, 0.2, 0.5 }, UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
+                universeVM.Simulation = new SimulationModel(basketOption, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
+            }
             universeVM.UnderlyingUniverse = new Universe(universeVM.Simulation, universeVM.GraphVM.Graph);
             if (win != null)
             {

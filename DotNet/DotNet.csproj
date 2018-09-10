@@ -108,6 +108,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="StringToIntConverter.cs" />
     <Compile Include="Models\Balancement.cs" />
     <Compile Include="Models\SimulationModel.cs" />
     <Compile Include="Models\Estimateur.cs" />

@@ -31,9 +31,10 @@ namespace DotNet.Models
             if (dateDebut.DayOfWeek.ToString() == "Saturday" || dateDebut.DayOfWeek.ToString() == "Sunday")
                 { throw new Exception("Beginning date is not a business day"); }
             this.dateDebut = dateDebut;
-            this.plageEstimation = plageEstimation;
             if (plageEstimation < 2) { throw new ArgumentOutOfRangeException("Estimation duration should be upper than 2 days"); }
             this.plageEstimation = plageEstimation;
+            if (periodeRebalancement <= 0) { throw new ArgumentOutOfRangeException("Rebalancement period should be positive"); }
+            if (option.Strike <= 0) { throw new ArgumentOutOfRangeException("Strike should be positive"); }
             this.balancement = new Balancement(dataFeedProvider, option, dateDebut, plageEstimation, periodeRebalancement);
         }
         #endregion
