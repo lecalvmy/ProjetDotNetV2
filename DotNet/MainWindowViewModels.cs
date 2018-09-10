@@ -12,6 +12,8 @@ using PricingLibrary.Utilities.MarketDataFeed;
 using System.Windows;
 using DotNet.Visualization;
 using DotNet.ViewModel;
+using System.Text.RegularExpressions;
+using System.Windows.Input;
 
 namespace DotNet
 {
@@ -122,11 +124,6 @@ namespace DotNet
             win = new GraphVisualization();
             win.Show();
             TickerStarted = false;
-        }
-
-        public void Method()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

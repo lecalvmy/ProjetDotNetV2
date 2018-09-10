@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,5 +46,24 @@ namespace DotNet
         {
 
         }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        //bool IsDecimalFormat(string input)
+        //{
+        //    Decimal dummy;
+        //    return Decimal.TryParse(input, out dummy);
+        //}
+
+        //private void NumberValidationTextBox2(object sender, TextCompositionEventArgs e)
+        //{
+        //     e.Handled = !IsDecimalFormat(e.Text);
+        //}
+
+        
     }
 }

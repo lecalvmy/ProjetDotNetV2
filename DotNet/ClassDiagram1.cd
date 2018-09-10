@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="DotNet.MainWindowViewModels">
-    <Position X="1.25" Y="2" Width="2.25" />
+    <Position X="6.25" Y="1" Width="2.25" />
     <Members>
       <Property Name="AvailableData" Hidden="true" />
       <Property Name="AvailableOptions" Hidden="true" />
       <Property Name="graphTest" Hidden="true" />
       <Property Name="GraphTest" Hidden="true" />
-      <Method Name="Method" Hidden="true" />
       <Property Name="SelectedClasses" Hidden="true" />
       <Property Name="Simulation" Hidden="true" />
       <Property Name="StartCommand" Hidden="true" />
@@ -20,12 +19,12 @@
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>EAAAAACAAAAAQAABAEAgAQAgEAAAIBAAAIBABAABEAA=</HashCode>
+      <HashCode>EAAAAACAAAAAQAAJAEAAAQAgEAAAIBAAAIBABAABEAQ=</HashCode>
       <FileName>MainWindowViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DotNet.ViewModel.GraphViewModel">
-    <Position X="5" Y="0.5" Width="2" />
+    <Position X="3.5" Y="4.75" Width="2" />
     <Members>
       <Property Name="Graph" Hidden="true" />
       <Property Name="Name" Hidden="true" />
@@ -36,7 +35,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DotNet.ViewModel.InitializerViewModel">
-    <Position X="5" Y="2.75" Width="2" />
+    <Position X="9" Y="7.5" Width="2" />
     <Members>
       <Property Name="debutTest" Hidden="true" />
       <Property Name="DebutTest" Hidden="true" />
@@ -54,12 +53,12 @@
       <Property Name="TypeData" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAIAAAACEAAAAIAAAQCAAAEAACARgAAgAIAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAAACEAAAAIAAAQSAAAEEACARgAAgAIAAAAAAA=</HashCode>
       <FileName>ViewModel\InitializerViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DotNet.ViewModel.UniverseViewModel">
-    <Position X="1" Y="5" Width="2.5" />
+    <Position X="6.25" Y="4.75" Width="2.5" />
     <Members>
       <Property Name="GraphVM" Hidden="true" />
       <Field Name="initializer" Hidden="true" />
@@ -73,7 +72,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DotNet.Models.Balancement">
-    <Position X="9" Y="7" Width="2.25" />
+    <Position X="12.5" Y="7.25" Width="2.25" />
     <Members>
       <Field Name="dates" Hidden="true" />
       <Property Name="Dates" Hidden="true" />
@@ -101,7 +100,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="DotNet.Models.BDModel">
-    <Position X="0.75" Y="7.5" Width="2.75" />
+    <Position X="0.75" Y="8" Width="2.75" />
     <Members>
       <Field Name="connectionString" Hidden="true" />
       <Method Name="getDBMinDate" Hidden="true" />
@@ -112,7 +111,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DotNet.Models.Estimateur">
-    <Position X="9" Y="9" Width="2.25" />
+    <Position X="12.5" Y="9" Width="2.25" />
     <Members>
       <Method Name="computeCorrelationMatrix" Hidden="true" />
       <Method Name="computeCovarianceMatrix" Hidden="true" />
@@ -132,7 +131,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DotNet.Models.Graph">
-    <Position X="12" Y="1.5" Width="2.75" />
+    <Position X="0.5" Y="4.75" Width="2.75" />
     <Members>
       <Method Name="Graph" Hidden="true" />
       <Property Name="Labels" Hidden="true" />
@@ -146,7 +145,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DotNet.Models.HistoricalDataFeedProvider" HideInheritanceLine="true">
-    <Position X="0.75" Y="8.75" Width="2.75" />
+    <Position X="0.75" Y="9.5" Width="2.75" />
     <Members>
       <Method Name="GetMinDate" Hidden="true" />
       <Property Name="Name" Hidden="true" />
@@ -159,7 +158,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DotNet.Models.SimulationModel">
-    <Position X="8.75" Y="3.75" Width="2.75" />
+    <Position X="9.75" Y="4.75" Width="2.75" />
     <Members>
       <Property Name="Balancement" Hidden="true" />
       <Property Name="DataFeedProvider" Hidden="true" />
@@ -178,7 +177,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="DotNet.Models.Portfolio">
-    <Position X="12.25" Y="3.75" Width="2.75" />
+    <Position X="13.25" Y="2.75" Width="2.75" />
     <Members>
       <Method Name="Method" Hidden="true" />
       <Method Name="Portfolio" Hidden="true" />
@@ -188,12 +187,8 @@
       <FileName>Models\Portfolio.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Prism.Mvvm.BindableBase" Collapsed="true">
-    <Position X="0.75" Y="1" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
   <Class Name="DotNet.Models.Universe">
-    <Position X="4.5" Y="5" Width="2.25" />
+    <Position X="6" Y="7.5" Width="2.25" />
     <Members>
       <Property Name="Graph" Hidden="true" />
       <Property Name="Simulation" Hidden="true" />

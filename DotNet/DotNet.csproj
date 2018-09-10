@@ -108,11 +108,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="StringToIntConverter.cs" />
     <Compile Include="Models\Balancement.cs" />
     <Compile Include="Models\SimulationModel.cs" />
     <Compile Include="Models\Estimateur.cs" />
-    <Compile Include="Models\LogPrices.cs" />
     <Compile Include="Models\Universe.cs" />
     <Compile Include="ViewModel\InitializerViewModel.cs" />
     <Compile Include="ViewModel\UniverseViewModel.cs" />
