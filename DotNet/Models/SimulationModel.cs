@@ -36,18 +36,18 @@ namespace DotNet.Models
             this.option = option;
             if (this.option == null)
             {
-                MessageBox.Show("Option should not be null");
+                MessageBox.Show("Option should not be null, previous option was taken");
             }
             this.dataFeedProvider = dataFeedProvider;
-            if (this.dataFeedProvider == null){MessageBox.Show("dataFeed should not be null");}
+            if (this.dataFeedProvider == null){MessageBox.Show("dataFeed should not be null, previous datafeed was taken");}
             if (dateDebut == null) { MessageBox.Show("Beginning date should not be null"); }
             if (dateDebut.DayOfWeek.ToString() == "Saturday" || dateDebut.DayOfWeek.ToString() == "Sunday")
                 { MessageBox.Show("Beginning date is not a business day"); }
             this.dateDebut = dateDebut;
-            if (plageEstimation < 2) { MessageBox.Show("plage estimation should be at least 2"); }
+            if (plageEstimation < 2) { MessageBox.Show("plage estimation should be at least 2, , previous plageEstimation was taken "); }
                 this.plageEstimation = plageEstimation;
-            if (periodeRebalancement <= 0) { MessageBox.Show("Rebalancement period should be positive"); }
-            if (option.Strike <= 0) { MessageBox.Show("Strike should be positive"); }
+            if (periodeRebalancement <= 0) { MessageBox.Show("Rebalancement period should be positive, previous periode for rebalancement was taken "); }
+            if (option.Strike <= 0) { MessageBox.Show("Strike should be positive, previous strike was taken"); }
             this.balancement = new Balancement(dataFeedProvider, option, dateDebut, plageEstimation, periodeRebalancement);
         }
         #endregion
@@ -102,22 +102,6 @@ namespace DotNet.Models
         {
             get { return balancement; }
         }
-        /*
-        public List<double> ComparaisonOptionCouverture()
-        {
-            var rebalancements = GetRebalancement();
-            List<double> comparaisons = new List<double>();
 
-            double optionInitiale = rebalancements[0].prixOption();
-
-            foreach (RebalancementModel rebalancement in rebalancements)
-            {
-
-            }
-            //comparaisons.Add(Math.Abs(rebalancement.prixOption() - rebalancement.ValeurPortefeuille) / optionInitiale);
-            //Console.WriteLine(Math.Abs(rebalancement.prixOption() - rebalancement.ValeurPortefeuille) / optionInitiale);
-
-            return comparaisons;
-        }*/
     }
 }

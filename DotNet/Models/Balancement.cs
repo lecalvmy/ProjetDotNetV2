@@ -46,7 +46,6 @@ namespace DotNet.Models
             Dictionary<string, double> compo = new Dictionary<string, double> { };
 
             volatilite = Estimateur.Volatilite(priceList, plageEstimation, dateDebut.AddDays(plageEstimation), option, dataFeedProvider);
-            Console.WriteLine("Volatilite: " + volatilite);
             matrixCorrelation = Estimateur.getCorrMatrix(priceList, plageEstimation, dateDebut.AddDays(plageEstimation));
             Estimateur.dispMatrix(matrixCorrelation);
 

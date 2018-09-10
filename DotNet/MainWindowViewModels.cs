@@ -167,7 +167,7 @@ namespace DotNet
             }
             else
             {
-                throw new InvalidOperationException("Vanilla Call supports only one share, and basket options supports at least two shares");
+                MessageBox.Show("Vanilla Call supports only one share, and basket options supports at least two shares");
             }
             universeVM.UnderlyingUniverse = new Universe(universeVM.Simulation, universeVM.GraphVM.Graph);
             if (win != null)
@@ -179,12 +179,7 @@ namespace DotNet
             win.Show();
             TickerStarted = false;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
         #endregion
-=======
->>>>>>> 5809c44713676fd037550476c154fb7cd5733afb
-=======
->>>>>>> 5809c44713676fd037550476c154fb7cd5733afb
+
     }
 }

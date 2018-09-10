@@ -46,27 +46,11 @@ namespace DotNet
         {
 
         }
-
-<<<<<<< HEAD
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-        //bool IsDecimalFormat(string input)
-        //{
-        //    Decimal dummy;
-        //    return Decimal.TryParse(input, out dummy);
-        //}
-
-        //private void NumberValidationTextBox2(object sender, TextCompositionEventArgs e)
-        //{
-        //     e.Handled = !IsDecimalFormat(e.Text);
-        //}
-
-        
-=======
         private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
         {
 
@@ -76,6 +60,5 @@ namespace DotNet
         {
 
         }
->>>>>>> b1c4f2ce0dcc1ce4b50b1679448101c50e263362
     }
 }

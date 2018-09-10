@@ -40,11 +40,7 @@ namespace DotNet.Models
         public SimulationModel Simulation
         {
             get { return simulation; }
-            set
-            {
-                simulation = value;
-                //RaisePropertyChanged(nameof(simulation));
-            }
+            set {simulation = value; }
         }
 
         public Graph Graph
@@ -54,7 +50,6 @@ namespace DotNet.Models
             {
                 graph = value;
                 graph.setSimulation(simulation);
-                //RaisePropertyChanged(nameof(graph);
             }
         }
 

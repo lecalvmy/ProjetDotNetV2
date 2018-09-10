@@ -18,7 +18,6 @@ namespace DotNet.ViewModel
     {
         #region Private Fields
 
-       // private UniverseFacade facade;
         private GraphViewModel graphVM;
         private SimulationModel simulation;
         private InitializerViewModel initializer;
@@ -31,12 +30,9 @@ namespace DotNet.ViewModel
         public UniverseViewModel()
         {
             initializer = new InitializerViewModel();
-            /*simulation = new SimulationModel(new VanillaCall("Vanilla Call", new Share("VanillaShare", "1"), initializer.Maturity, initializer.Strike),
-            initializer.TypeData, initializer.debutTest, initializer.PlageEstimation);*/
             simulation = new SimulationModel(initializer.Option, initializer.TypeData, initializer.debutTest, initializer.PlageEstimation, initializer.PeriodeRebalancement);
             graphVM = new GraphViewModel();
             underlyingUniverse = new Universe(simulation, graphVM.Graph);
-            /* facade = new UniverseFacade(underlyingUniverse); */
         }
 
         #endregion Public Constructors
@@ -47,10 +43,6 @@ namespace DotNet.ViewModel
             get { return initializer; }
             set { initializer = value; }
         }
-        /* public UniverseFacade Facade
-         {
-             get { return facade; }
-         }*/
 
         public SimulationModel Simulation
         {
@@ -78,13 +70,5 @@ namespace DotNet.ViewModel
         
         #endregion Public Properties
 
-        #region Public Methods
-
-        public void ResetUniverse()
-        {
-            //Facade.InitializeObservableField();
-        }
-
-        #endregion Public Methods
     }
 }

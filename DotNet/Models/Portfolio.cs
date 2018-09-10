@@ -68,9 +68,5 @@ namespace DotNet.Models
         }
         #endregion
 
-        public void Method()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
