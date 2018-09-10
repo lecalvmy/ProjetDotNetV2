@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ AUTHORS
+ MYLENE LE CALVEZ
+ ALEXANDRE MAZARS
+ DANIELLA TEUKENG MOBOU
+ ALEXANDRE VOLCIC
+ */
+using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Controls.DataVisualization;
@@ -12,7 +19,6 @@ namespace DotNet.Models
     {
         #region public field
         public string Name { get { return "HedgeVsPorfolio"; } }
-
         public SeriesCollection SeriesCollection { get; set; }
         public List<string> Labels { get; set; }
         public SimulationModel GraphSimulation;

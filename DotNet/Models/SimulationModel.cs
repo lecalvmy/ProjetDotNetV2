@@ -1,8 +1,16 @@
-﻿using System;
+﻿/*
+ AUTHORS
+ MYLENE LE CALVEZ
+ ALEXANDRE MAZARS
+ DANIELLA TEUKENG MOBOU
+ ALEXANDRE VOLCIC
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using PricingLibrary.FinancialProducts;
 using PricingLibrary.Utilities.MarketDataFeed;
 
@@ -25,16 +33,21 @@ namespace DotNet.Models
 
         public SimulationModel(IOption option, IDataFeedProvider dataFeedProvider, DateTime dateDebut, int plageEstimation, int periodeRebalancement)
         {
-            this.option = option ?? throw new ArgumentNullException("Option should not be null");
-            this.dataFeedProvider = dataFeedProvider ?? throw new ArgumentNullException("dataFeed should not be null");
-            if (dateDebut == null) { throw new ArgumentNullException("Beginning date should not be null"); }
+            this.option = option;
+            if (this.option == null)
+            {
+                MessageBox.Show("Option should not be null");
+            }
+            this.dataFeedProvider = dataFeedProvider;
+            if (this.dataFeedProvider == null){MessageBox.Show("dataFeed should not be null");}
+            if (dateDebut == null) { MessageBox.Show("Beginning date should not be null"); }
             if (dateDebut.DayOfWeek.ToString() == "Saturday" || dateDebut.DayOfWeek.ToString() == "Sunday")
-                { throw new Exception("Beginning date is not a business day"); }
+                { MessageBox.Show("Beginning date is not a business day"); }
             this.dateDebut = dateDebut;
-            if (plageEstimation < 2) { throw new ArgumentOutOfRangeException("Estimation duration should be upper than 2 days"); }
-            this.plageEstimation = plageEstimation;
-            if (periodeRebalancement <= 0) { throw new ArgumentOutOfRangeException("Rebalancement period should be positive"); }
-            if (option.Strike <= 0) { throw new ArgumentOutOfRangeException("Strike should be positive"); }
+            if (plageEstimation < 2) { MessageBox.Show("plage estimation should be at least 2"); }
+                this.plageEstimation = plageEstimation;
+            if (periodeRebalancement <= 0) { MessageBox.Show("Rebalancement period should be positive"); }
+            if (option.Strike <= 0) { MessageBox.Show("Strike should be positive"); }
             this.balancement = new Balancement(dataFeedProvider, option, dateDebut, plageEstimation, periodeRebalancement);
         }
         #endregion

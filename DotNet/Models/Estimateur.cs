@@ -1,10 +1,14 @@
-﻿
+﻿/*
+ AUTHORS
+ MYLENE LE CALVEZ
+ ALEXANDRE MAZARS
+ DANIELLA TEUKENG MOBOU
+ ALEXANDRE VOLCIC
+ */
 using PricingLibrary.Utilities.MarketDataFeed;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 using PricingLibrary.FinancialProducts;
 
