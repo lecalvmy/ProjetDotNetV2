@@ -1,26 +1,30 @@
-﻿using PricingLibrary.Computations;
+﻿/*
+ AUTHORS
+ MYLENE LE CALVEZ
+ ALEXANDRE MAZARS
+ DANIELLA TEUKENG MOBOU
+ ALEXANDRE VOLCIC
+ */
+using PricingLibrary.Computations;
 using PricingLibrary.FinancialProducts;
 using PricingLibrary.Utilities;
 using PricingLibrary.Utilities.MarketDataFeed;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace DotNet.Models
 {
     class Balancement
     {
         #region public fields
-        //public Estimateur estimateur; 
-        //public DataFeed data;
         public Portfolio portfolio;
         public Pricer pricer;
-
         public double volatilite;
         public double[,] matrixCorrelation;
         #endregion
+
         #region Private fields
         private List<decimal> hedge;
         private List<double> priceOption;
@@ -33,36 +37,33 @@ namespace DotNet.Models
         {
             var dateDebut = new DateTime(dateTmpDebut.Year, dateTmpDebut.Month, dateTmpDebut.Day);
             var priceList = dataFeedProvider.GetDataFeed(option, dateDebut);
-            //Console.WriteLine(option.Maturity);
-            //Console.WriteLine(priceList.Last().Date);
-            volatilite = Estimateur.Volatilite(priceList, plageEstimation, dateDebut.AddDays(plageEstimation), option, dataFeedProvider);
-            Console.WriteLine("Volatilite: " + volatilite);
-            matrixCorrelation = Estimateur.getCorrMatrix(priceList, plageEstimation, dateDebut.AddDays(plageEstimation));
-            Estimateur.dispMatrix(matrixCorrelation);
 
             payoff = payOffaMaturite(option, priceList);
             pricer = new Pricer();
             hedge = new List<decimal>();
             priceOption = new List<double>();
             dates = new List<DateTime>();
-
-            PricingResults priceDelta = PriceResults(option, priceList[0].PriceList, dateDebut, dataFeedProvider);
             Dictionary<string, double> compo = new Dictionary<string, double> { };
-            int i = 0;
 
+            volatilite = Estimateur.Volatilite(priceList, plageEstimation, dateDebut.AddDays(plageEstimation), option, dataFeedProvider);
+            Console.WriteLine("Volatilite: " + volatilite);
+            matrixCorrelation = Estimateur.getCorrMatrix(priceList, plageEstimation, dateDebut.AddDays(plageEstimation));
+            Estimateur.dispMatrix(matrixCorrelation);
+
+            
+            PricingResults priceDelta = PriceResults(option, priceList[0].PriceList, dateDebut, dataFeedProvider);            
+            int i = 0;
             foreach (string id in option.UnderlyingShareIds)
             {
                 compo[id] = priceDelta.Deltas[i];
                 i += 1;
             }
-
             DateTime oldBalancement = dateDebut;
 
             portfolio = new Portfolio(Convert.ToDecimal(priceDelta.Price), compo, priceList[0].PriceList);
             priceOption.Add(priceDelta.Price);
             hedge.Add(portfolio.portfolioValue);
             dates.Add(priceList[0].Date);
-            //Traitement des données 
 
             foreach (DataFeed priceAsset_t in priceList.Skip(1))
             {
@@ -72,7 +73,6 @@ namespace DotNet.Models
 
                     priceDelta = PriceResults(option, priceAsset_t.PriceList, dateDebut, dataFeedProvider);
                     priceOption.Add(priceDelta.Price);
-                    //updateCompo
                     portfolio.UpdatePortfolioValue(priceAsset_t, dataFeedProvider.NumberOfDaysPerYear, oldBalancement);
                     i = 0;
                     foreach (string id in option.UnderlyingShareIds)
@@ -112,28 +112,10 @@ namespace DotNet.Models
             }
             
         }
-        /*public Dictionary<string, double> CalculCompo(IOption option, PricingResults priceDelta)
-        {
-            Dictionary<string, double> compo = new Dictionary<string, double> { };
-            int i = 0;
-
-            foreach (string id in option.UnderlyingShareIds)
-            {
-                compo[id] = priceDelta.Deltas[i];
-                i += 1;
-            }
-            return (compo);
-        }*/
-        #endregion
-
+       
         public double payOffaMaturite(IOption option, List<DataFeed> priceList)
         {
             return option.GetPayoff(priceList.Last().PriceList);
-        }
-
-        public void Method()
-        {
-            throw new System.NotImplementedException();
         }
 
         public double Payoff
@@ -152,13 +134,7 @@ namespace DotNet.Models
         {
             get { return this.dates; }
         }
+        #endregion
 
-        internal SimulationModel Utilise
-        {
-            get => default(SimulationModel);
-            set
-            {
-            }
-        }
     }
 }

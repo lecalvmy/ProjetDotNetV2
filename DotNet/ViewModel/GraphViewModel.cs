@@ -1,4 +1,11 @@
-﻿using DotNet.Models;
+﻿/*
+ AUTHORS
+ MYLENE LE CALVEZ
+ ALEXANDRE MAZARS
+ DANIELLA TEUKENG MOBOU
+ ALEXANDRE VOLCIC
+ */
+using DotNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

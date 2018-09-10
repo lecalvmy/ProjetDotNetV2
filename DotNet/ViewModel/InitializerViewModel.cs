@@ -1,4 +1,11 @@
-﻿using PricingLibrary.FinancialProducts;
+﻿/*
+ AUTHORS
+ MYLENE LE CALVEZ
+ ALEXANDRE MAZARS
+ DANIELLA TEUKENG MOBOU
+ ALEXANDRE VOLCIC
+ */
+using PricingLibrary.FinancialProducts;
 using PricingLibrary.Utilities.MarketDataFeed;
 using System;
 using System.Collections.Generic;
@@ -29,7 +36,7 @@ namespace DotNet.ViewModel
             strike = 8;
             periodeRebalancement = 5;
             nameOption = "Vanilla Call";
-            option = new VanillaCall(nameOption, new Share("Axa", "1"), maturity, strike);
+            option = new VanillaCall(nameOption, new Share("AIRBUS GROUP SE", "AIR FP    "), maturity, strike);
         }
 
         public IOption Option

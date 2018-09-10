@@ -1,4 +1,11 @@
-﻿using PricingLibrary.FinancialProducts;
+﻿/*
+ AUTHORS
+ MYLENE LE CALVEZ
+ ALEXANDRE MAZARS
+ DANIELLA TEUKENG MOBOU
+ ALEXANDRE VOLCIC
+ */
+using PricingLibrary.FinancialProducts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,7 +40,7 @@ namespace DotNet
         public ObservableCollection<IDataFeedProvider> AvailableData { get; private set; }
         public static Graph graphTest { get; set; }
         public Window win;
-
+        public DelegateCommand StartCommand { get; private set; }
         #endregion
 
 
@@ -44,47 +51,54 @@ namespace DotNet
            
             StartCommand = new DelegateCommand(StartTicker, CanStartTicker);
             universeVM = new UniverseViewModel();
-            //string vanillaCall = new VanillaCall("Vanilla Call", new Share("AIRBUS GROUP SE", "AIR FP    "), UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
-            //BasketOption basketOption = new BasketOption("Basket Option", new Share[] { new Share("CREDIT AGRICOLE SA", "ACA FP    "), new Share("AIR LIQUIDE SA", "AI FP     "), new Share("AIRBUS GROUP SE", "AIR FP    ") }, new double[] { 0.3, 0.2, 0.5 }, UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
-            string option1 = "vanillaCall";
-            string option2 = "basketOption";
-            List<string> myOptionsList = new List<string>() { option1, option2 };
-            AvailableOptions = new ObservableCollection<string>(myOptionsList);
 
-            IDataFeedProvider type1 = new SimulatedDataFeedProvider();
-            IDataFeedProvider type2 = new HistoricalDataFeedProvider();
-            IDataFeedProvider type3 = new SemiHistoricDataFeedProvider();
-            List<IDataFeedProvider> mydataList = new List<IDataFeedProvider>() { type1,type2,type3 };
-            AvailableData = new ObservableCollection<IDataFeedProvider>(mydataList);
+            AvailableOptions = new ObservableCollection<string>()
+            {
+                "vanillaCall",
+                "basketOption",
+            };
+
+            AvailableData = new ObservableCollection<IDataFeedProvider>()
+            {
+                new SimulatedDataFeedProvider(),
+                new HistoricalDataFeedProvider(),
+                new SemiHistoricDataFeedProvider(),
+            };
 
 
             AvailableShares = new ObservableCollection<ComponentInfo>()
             {
-                new ComponentInfo() {Name = "Axa", Id = "1", IsSelected = true},
-                new ComponentInfo() {Name = "Accor", Id = "2", IsSelected = false},
-                new ComponentInfo() {Name = "Bnp", Id = "3", IsSelected = false},
-                new ComponentInfo() {Name = "Vivendi", Id = "4", IsSelected = false},
-                new ComponentInfo() {Name = "Dexia", Id = "5", IsSelected = false},
-                new ComponentInfo() {Name = "Carrefour", Id = "6", IsSelected = false}
+                new ComponentInfo() {Name = "AIRBUS GROUP SE", Id = "AIR FP    ", IsSelected = true},
+                new ComponentInfo() {Name = "CREDIT AGRICOLE SA", Id = "ACA FP    ", IsSelected = false},
+                new ComponentInfo() {Name = "AIR LIQUIDE SA", Id = "AI FP     ", IsSelected = false},
+                new ComponentInfo() {Name = "ACCOR SA", Id = "AC FP     ", IsSelected = false},
+                new ComponentInfo() {Name = "ALSTOM", Id = "ALO FP    ", IsSelected = false},
+                new ComponentInfo() {Name = "DANONE", Id = "BN FP     ", IsSelected = false},
+                new ComponentInfo() {Name = "BNP PARIBAS", Id = "BNP FP    ", IsSelected = false},
+                new ComponentInfo() {Name = "CARREFOUR SA", Id = "CA FP     ", IsSelected = false},
+                new ComponentInfo() {Name = "CAP GEMINI", Id = "CAP FP    ", IsSelected = false},
+                new ComponentInfo() {Name = "AXA SA", Id = "CS FP     ", IsSelected = false},
+                new ComponentInfo() {Name = "EDF", Id = "EDF FP    ", IsSelected = false},
+                new ComponentInfo() {Name = "ESSILOR INTERNATIONAL", Id = "EI FP     ", IsSelected = false},
+                new ComponentInfo() {Name = "BOUYGUES SA", Id = "EN FP     ", IsSelected = false},
+                new ComponentInfo() {Name = "SOCIETE GENERALE SA", Id = "GLE FP    ", IsSelected = false},
+
+
             };
             graphTest = GraphTest;
-           win = new GraphVisualization();
-            /* win.Show();*/
+            win = new GraphVisualization();
         }
         #endregion
-
+        #region Set Get
         public UniverseViewModel UniverseVM { get { return universeVM; } }
-
         public SimulationModel Simulation
         {
             get { return universeVM.Simulation; }
         }
-
         public Graph GraphTest
         {
             get { return universeVM.GraphVM.Graph; }
         }
-
         public Graph SelectedClasses
         {
             get { return selectedClasses; }
@@ -99,9 +113,9 @@ namespace DotNet
                 RaisePropertyChanged(nameof(win));
             }
         }
+        #endregion
 
-        public DelegateCommand StartCommand { get; private set; }
-
+        #region public method
         public bool TickerStarted
         {
             get { return tickerStarted; }
@@ -113,6 +127,9 @@ namespace DotNet
             }
 
         }
+        #endregion
+
+        #region Private Methods
         private bool CanStartTicker()
         {
             return !TickerStarted;
@@ -140,14 +157,10 @@ namespace DotNet
             {
                 Random aleatoire = new Random();
                 double[] weights = new double[length];
+
                 for (int i = 0; i < length; i++)
                 {
-                    weights[i] = aleatoire.Next();
-                }
-                double som = weights.Sum();
-                for (int i = 0; i < length; i++)
-                {
-                    weights[i] = weights[i]/som;
+                    weights[i] = (double) 1/length;
                 }
                 BasketOption basketOption = new BasketOption(UniverseVM.Initializer.NameOption, sharesTab, weights, UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
                 universeVM.Simulation = new SimulationModel(basketOption, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
@@ -166,5 +179,12 @@ namespace DotNet
             win.Show();
             TickerStarted = false;
         }
+<<<<<<< HEAD
+<<<<<<< HEAD
+        #endregion
+=======
+>>>>>>> 5809c44713676fd037550476c154fb7cd5733afb
+=======
+>>>>>>> 5809c44713676fd037550476c154fb7cd5733afb
     }
 }
