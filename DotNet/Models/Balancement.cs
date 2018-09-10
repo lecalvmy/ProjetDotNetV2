@@ -29,9 +29,12 @@ namespace DotNet.Models
         #endregion
 
         #region Public constructor
-        public Balancement(IDataFeedProvider dataFeedProvider, IOption option, DateTime dateDebut, int plageEstimation, int periodeRebalancement)
+        public Balancement(IDataFeedProvider dataFeedProvider, IOption option, DateTime dateTmpDebut, int plageEstimation, int periodeRebalancement)
         {
+            var dateDebut = new DateTime(dateTmpDebut.Year, dateTmpDebut.Month, dateTmpDebut.Day);
             var priceList = dataFeedProvider.GetDataFeed(option, dateDebut);
+            Console.WriteLine(option.Maturity);
+            Console.WriteLine(priceList.Last().Date);
             volatilite = Estimateur.Volatilite(priceList, plageEstimation, dateDebut.AddDays(plageEstimation), option, dataFeedProvider);
             Console.WriteLine("Volatilite: " + volatilite);
             matrixCorrelation = Estimateur.getCorrMatrix(priceList, plageEstimation, dateDebut.AddDays(plageEstimation));

@@ -18,6 +18,7 @@ namespace DotNet.ViewModel
         public double strike { get; set; }
         public IDataFeedProvider typeData { get; set; }
         public int periodeRebalancement { get; set; }
+        public string nameOption { get; set; }
         public InitializerViewModel()
         {
             debutTest = DateTime.Now;
@@ -26,7 +27,8 @@ namespace DotNet.ViewModel
             typeData = new SimulatedDataFeedProvider();
             strike = 8;
             periodeRebalancement = 5;
-            option = new VanillaCall("Vanilla Call", new Share("AIRBUS GROUP SE", "AIR FP    "), maturity, strike);
+            nameOption = "Vanilla Call";
+            option = new VanillaCall(nameOption, new Share("AIRBUS GROUP SE", "AIR FP    "), maturity, strike);
         }
 
         public IOption Option
@@ -56,6 +58,11 @@ namespace DotNet.ViewModel
         {
             get { return strike; }
             set { strike = value; }
+        }
+        public string NameOption
+        {
+            get { return nameOption; }
+            set { nameOption = value; }
         }
         public IDataFeedProvider TypeData
         {
