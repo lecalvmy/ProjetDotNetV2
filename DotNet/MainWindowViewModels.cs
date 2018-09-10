@@ -180,7 +180,10 @@ namespace DotNet
             TickerStarted = false;
         }
 <<<<<<< HEAD
+<<<<<<< HEAD
         #endregion
+=======
+>>>>>>> 5809c44713676fd037550476c154fb7cd5733afb
 =======
 >>>>>>> 5809c44713676fd037550476c154fb7cd5733afb
     }
