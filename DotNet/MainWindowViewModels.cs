@@ -93,17 +93,11 @@ namespace DotNet
 
         }
         private bool CanStartTicker()
-        {
-            /*while(strike == null || maturity == null )
-            {
-                TickerStarted = false;
-            }*/
-            
+        {             
             return !TickerStarted;
         }
         private void StartTicker()
         {
-            //universeVM = new UniverseViewModel();
             universeVM.Simulation = new SimulationModel(universeVM.Initializer.Option, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
             
             universeVM.UnderlyingUniverse = new Universe(universeVM.Simulation, universeVM.GraphVM.Graph);
