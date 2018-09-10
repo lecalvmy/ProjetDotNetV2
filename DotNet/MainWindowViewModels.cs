@@ -21,10 +21,12 @@ namespace DotNet
         private Graph selectedClasses;
         private UniverseViewModel universeVM;
         private bool tickerStarted;
+        private IOption option;
         #endregion
 
         #region public fields
-        public ObservableCollection<IOption> AvailableOptions { get; private set; }
+        public ObservableCollection<string> AvailableOptions { get; private set; }
+        public string selectedOptions { get; set;}
         public ObservableCollection<IDataFeedProvider> AvailableData { get; private set; }
         public static Graph graphTest { get; set; }
         public Window win;
@@ -37,10 +39,12 @@ namespace DotNet
         {
             StartCommand = new DelegateCommand(StartTicker, CanStartTicker);
             universeVM = new UniverseViewModel();
-            VanillaCall vanillaCall = new VanillaCall("Vanilla Call", new Share("AIRBUS GROUP SE", "AIR FP    "), UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
-            BasketOption basketOption = new BasketOption("Basket Option", new Share[] { new Share("CREDIT AGRICOLE SA", "ACA FP    "), new Share("AIR LIQUIDE SA", "AI FP     "), new Share("AIRBUS GROUP SE", "AIR FP    ") }, new double[] { 0.3, 0.2, 0.5 }, UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
-            List<IOption> myOptionsList = new List<IOption>() { vanillaCall, basketOption };
-            AvailableOptions = new ObservableCollection<IOption>(myOptionsList);
+            //string vanillaCall = new VanillaCall("Vanilla Call", new Share("AIRBUS GROUP SE", "AIR FP    "), UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
+            //BasketOption basketOption = new BasketOption("Basket Option", new Share[] { new Share("CREDIT AGRICOLE SA", "ACA FP    "), new Share("AIR LIQUIDE SA", "AI FP     "), new Share("AIRBUS GROUP SE", "AIR FP    ") }, new double[] { 0.3, 0.2, 0.5 }, UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
+            string option1 = "vanillaCall";
+            string option2 = "basketOption";
+            List<string> myOptionsList = new List<string>() { option1, option2 };
+            AvailableOptions = new ObservableCollection<string>(myOptionsList);
 
             IDataFeedProvider type1 = new SimulatedDataFeedProvider();
             IDataFeedProvider type2 = new HistoricalDataFeedProvider();
@@ -93,13 +97,22 @@ namespace DotNet
 
         }
         private bool CanStartTicker()
-        {             
+        {
             return !TickerStarted;
         }
         private void StartTicker()
         {
-            universeVM.Simulation = new SimulationModel(universeVM.Initializer.Option, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
-            
+
+            if (selectedOptions == "vanillaCall")
+            {
+                VanillaCall vanillaCall = new VanillaCall(UniverseVM.Initializer.NameOption, new Share("AIRBUS GROUP SE", "AIR FP    "), UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
+                universeVM.Simulation = new SimulationModel(vanillaCall, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
+            }
+            else
+            {
+                BasketOption basketOption = new BasketOption(UniverseVM.Initializer.NameOption, new Share[] { new Share("CREDIT AGRICOLE SA", "ACA FP    "), new Share("AIR LIQUIDE SA", "AI FP     "), new Share("AIRBUS GROUP SE", "AIR FP    ") }, new double[] { 0.3, 0.2, 0.5 }, UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
+                universeVM.Simulation = new SimulationModel(basketOption, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
+            }
             universeVM.UnderlyingUniverse = new Universe(universeVM.Simulation, universeVM.GraphVM.Graph);
             if (win != null)
             {
