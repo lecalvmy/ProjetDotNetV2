@@ -96,7 +96,7 @@ namespace DotNet.Models
             if(option is VanillaCall)
             {
                 VanillaCall optionVanilla = (VanillaCall)option;
-                PricingResults priceDelta = pricer.PriceCall(optionVanilla, dateDebut, dataFeedProvider.NumberOfDaysPerYear, spot[0], 0.25);
+                PricingResults priceDelta = pricer.PriceCall(optionVanilla, dateDebut, dataFeedProvider.NumberOfDaysPerYear, spot[0], volatilite);
                 return (priceDelta);
             }
             else
