@@ -18,6 +18,7 @@ namespace DotNet.ViewModel
         public double strike { get; set; }
         public IDataFeedProvider typeData { get; set; }
         public int periodeRebalancement { get; set; }
+
         public string nameOption { get; set; }
         public InitializerViewModel()
         {
