@@ -43,10 +43,12 @@ namespace DotNet.Models
             hedge = new List<decimal>();
             priceOption = new List<double>();
             dates = new List<DateTime>();
+
             //PricingResults priceDelta = pricer.PriceCall(option, dateDebut, dataFeedProvider.NumberOfDaysPerYear, Convert.ToDouble(priceList[1].PriceList[option.UnderlyingShareIds[0]]), 0.25);
             PricingResults priceDelta = PriceResults(option, priceList[0].PriceList, dateDebut, dataFeedProvider);
             Dictionary<string, double> compo = new Dictionary<string, double> { };
             int i = 0;
+
             foreach (string id in option.UnderlyingShareIds)
             {
                 compo[id] = priceDelta.Deltas[i];
@@ -63,26 +65,25 @@ namespace DotNet.Models
 
             foreach (DataFeed priceAsset_t in priceList.Skip(1))
             {
-                priceDelta = PriceResults(option, priceAsset_t.PriceList, dateDebut, dataFeedProvider);
-                priceOption.Add(priceDelta.Price);
-                //updateCompo
-                i = 0;
-                foreach (string id in option.UnderlyingShareIds)
-                {
-                    compo[id] = priceDelta.Deltas[i];
-                    i += 1;
-                }
 
                 if (DayCount.CountBusinessDays(oldBalancement, priceAsset_t.Date) >= periodeRebalancement)
                 {
+                    priceDelta = PriceResults(option, priceAsset_t.PriceList, dateDebut, dataFeedProvider);
+                    priceOption.Add(priceDelta.Price);
+                    //updateCompo
+                    portfolio.UpdatePortfolioValue(priceAsset_t, dataFeedProvider.NumberOfDaysPerYear, oldBalancement);
+                    i = 0;
+                    foreach (string id in option.UnderlyingShareIds)
+                    {
+                        compo[id] = priceDelta.Deltas[i];
+                        i += 1;
+                    }
+                    hedge.Add(portfolio.portfolioValue);
+                    dates.Add(priceAsset_t.Date);
+                    portfolio.UpdateLiquidity(priceAsset_t);
                     portfolio.UpdateCompo(compo);
                     oldBalancement = priceAsset_t.Date;
                 }
-
-                portfolio.UpdatePortfolioValue(priceAsset_t, dataFeedProvider.NumberOfDaysPerYear, oldBalancement);
-                hedge.Add(portfolio.portfolioValue);
-                dates.Add(priceAsset_t.Date);
-                portfolio.UpdateLiquidity(priceAsset_t);
             }
         }
         #endregion
