@@ -29,7 +29,7 @@ namespace DotNet.ViewModel
             strike = 8;
             periodeRebalancement = 5;
             nameOption = "Vanilla Call";
-            option = new VanillaCall(nameOption, new Share("AIRBUS GROUP SE", "AIR FP    "), maturity, strike);
+            option = new VanillaCall(nameOption, new Share("Axa", "1"), maturity, strike);
         }
 
         public IOption Option

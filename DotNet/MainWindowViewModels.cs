@@ -28,6 +28,7 @@ namespace DotNet
 
         #region public fields
         public ObservableCollection<string> AvailableOptions { get; private set; }
+        public ObservableCollection<ComponentInfo> AvailableShares { get; private set; }
         public string selectedOptions { get; set;}
         public ObservableCollection<IDataFeedProvider> AvailableData { get; private set; }
         public static Graph graphTest { get; set; }
@@ -39,6 +40,8 @@ namespace DotNet
         #region Public Constructors
         public MainWindowViewModels()
         {
+            selectedOptions = "vanillaCall";
+           
             StartCommand = new DelegateCommand(StartTicker, CanStartTicker);
             universeVM = new UniverseViewModel();
             //string vanillaCall = new VanillaCall("Vanilla Call", new Share("AIRBUS GROUP SE", "AIR FP    "), UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
@@ -50,8 +53,20 @@ namespace DotNet
 
             IDataFeedProvider type1 = new SimulatedDataFeedProvider();
             IDataFeedProvider type2 = new HistoricalDataFeedProvider();
-            List<IDataFeedProvider> mydataList = new List<IDataFeedProvider>() { type1,type2 };
+            IDataFeedProvider type3 = new SemiHistoricDataFeedProvider();
+            List<IDataFeedProvider> mydataList = new List<IDataFeedProvider>() { type1,type2,type3 };
             AvailableData = new ObservableCollection<IDataFeedProvider>(mydataList);
+
+
+            AvailableShares = new ObservableCollection<ComponentInfo>()
+            {
+                new ComponentInfo() {Name = "Axa", Id = "1", IsSelected = true},
+                new ComponentInfo() {Name = "Accor", Id = "2", IsSelected = false},
+                new ComponentInfo() {Name = "Bnp", Id = "3", IsSelected = false},
+                new ComponentInfo() {Name = "Vivendi", Id = "4", IsSelected = false},
+                new ComponentInfo() {Name = "Dexia", Id = "5", IsSelected = false},
+                new ComponentInfo() {Name = "Carrefour", Id = "6", IsSelected = false}
+            };
             graphTest = GraphTest;
            win = new GraphVisualization();
             /* win.Show();*/
@@ -104,16 +119,42 @@ namespace DotNet
         }
         private void StartTicker()
         {
-
-            if (selectedOptions == "vanillaCall")
+            List<Share> selectedShares =  new List<Share>();
+            foreach (var comp in AvailableShares)
             {
-                VanillaCall vanillaCall = new VanillaCall(UniverseVM.Initializer.NameOption, new Share("AIRBUS GROUP SE", "AIR FP    "), UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
+                if (comp.IsSelected)
+                {
+                    selectedShares.Add(new Share(comp.Name, comp.Id));
+                }
+            }
+            int length = selectedShares.Count;
+            Share[] sharesTab = new Share[length];
+            for (int i = 0; i < sharesTab.Length; i++) sharesTab[i] = selectedShares[i];
+
+            if ((selectedOptions == "vanillaCall" || UniverseVM.Initializer.Option is VanillaCall) && length == 1)
+            {
+                VanillaCall vanillaCall = new VanillaCall(UniverseVM.Initializer.NameOption, sharesTab[0], UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
                 universeVM.Simulation = new SimulationModel(vanillaCall, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
+            }
+            else if (selectedOptions == "basketOption" && length > 1)
+            {
+                Random aleatoire = new Random();
+                double[] weights = new double[length];
+                for (int i = 0; i < length; i++)
+                {
+                    weights[i] = aleatoire.Next();
+                }
+                double som = weights.Sum();
+                for (int i = 0; i < length; i++)
+                {
+                    weights[i] = weights[i]/som;
+                }
+                BasketOption basketOption = new BasketOption(UniverseVM.Initializer.NameOption, sharesTab, weights, UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
+                universeVM.Simulation = new SimulationModel(basketOption, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
             }
             else
             {
-                BasketOption basketOption = new BasketOption(UniverseVM.Initializer.NameOption, new Share[] { new Share("CREDIT AGRICOLE SA", "ACA FP    "), new Share("AIR LIQUIDE SA", "AI FP     "), new Share("AIRBUS GROUP SE", "AIR FP    ") }, new double[] { 0.3, 0.2, 0.5 }, UniverseVM.Initializer.Maturity, UniverseVM.Initializer.Strike);
-                universeVM.Simulation = new SimulationModel(basketOption, universeVM.Initializer.TypeData, UniverseVM.Initializer.DebutTest, UniverseVM.Initializer.PlageEstimation, UniverseVM.Initializer.PeriodeRebalancement);
+                throw new InvalidOperationException("Vanilla Call supports only one share, and basket options supports at least two shares");
             }
             universeVM.UnderlyingUniverse = new Universe(universeVM.Simulation, universeVM.GraphVM.Graph);
             if (win != null)

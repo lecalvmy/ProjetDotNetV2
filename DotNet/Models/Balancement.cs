@@ -33,8 +33,8 @@ namespace DotNet.Models
         {
             var dateDebut = new DateTime(dateTmpDebut.Year, dateTmpDebut.Month, dateTmpDebut.Day);
             var priceList = dataFeedProvider.GetDataFeed(option, dateDebut);
-            Console.WriteLine(option.Maturity);
-            Console.WriteLine(priceList.Last().Date);
+            //Console.WriteLine(option.Maturity);
+            //Console.WriteLine(priceList.Last().Date);
             volatilite = Estimateur.Volatilite(priceList, plageEstimation, dateDebut.AddDays(plageEstimation), option, dataFeedProvider);
             Console.WriteLine("Volatilite: " + volatilite);
             matrixCorrelation = Estimateur.getCorrMatrix(priceList, plageEstimation, dateDebut.AddDays(plageEstimation));
@@ -112,6 +112,18 @@ namespace DotNet.Models
             }
             
         }
+        /*public Dictionary<string, double> CalculCompo(IOption option, PricingResults priceDelta)
+        {
+            Dictionary<string, double> compo = new Dictionary<string, double> { };
+            int i = 0;
+
+            foreach (string id in option.UnderlyingShareIds)
+            {
+                compo[id] = priceDelta.Deltas[i];
+                i += 1;
+            }
+            return (compo);
+        }*/
         #endregion
 
         public double payOffaMaturite(IOption option, List<DataFeed> priceList)

@@ -47,6 +47,7 @@ namespace DotNet
 
         }
 
+<<<<<<< HEAD
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
@@ -65,5 +66,16 @@ namespace DotNet
         //}
 
         
+=======
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+>>>>>>> b1c4f2ce0dcc1ce4b50b1679448101c50e263362
     }
 }
