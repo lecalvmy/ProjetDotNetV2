@@ -49,7 +49,7 @@
         <Label Content="Test beginning" HorizontalAlignment="Left" Margin="33,83,0,0" VerticalAlignment="Top"/>
         <Label Content="Data type" HorizontalAlignment="Left" Margin="199,83,0,0" VerticalAlignment="Top"/>
         <Label Content="Nb of days for estimation" HorizontalAlignment="Left" Margin="340,85,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="NbJoursBalancement" HorizontalAlignment="Left" Margin="508,109,0,0" VerticalAlignment="Top" Text="{Binding UniverseVM.Initializer.PeriodeRebalancement, UpdateSourceTrigger=PropertyChanged}" Width="123" Height="24">
+        <TextBox Name="NbJoursBalancement" HorizontalAlignment="Left" Margin="508,109,0,0" VerticalAlignment="Top" Text="{Binding UniverseVM.Initializer.PeriodeRebalancement, UpdateSourceTrigger=PropertyChanged}" PreviewTextInput="NumberValidationTextBox" Width="123" Height="24">
             <Validation.ErrorTemplate>
                 <ControlTemplate>
                     <StackPanel>

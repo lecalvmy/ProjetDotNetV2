@@ -1,28 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
-  <Class Name="DotNet.MainWindowViewModels">
-    <Position X="6.25" Y="1" Width="2.25" />
-    <Members>
-      <Property Name="AvailableData" Hidden="true" />
-      <Property Name="AvailableOptions" Hidden="true" />
-      <Property Name="graphTest" Hidden="true" />
-      <Property Name="GraphTest" Hidden="true" />
-      <Property Name="SelectedClasses" Hidden="true" />
-      <Property Name="Simulation" Hidden="true" />
-      <Property Name="StartCommand" Hidden="true" />
-      <Field Name="tickerStarted" Hidden="true" />
-      <Property Name="TickerStarted" Hidden="true" />
-      <Property Name="UniverseVM" Hidden="true" />
-      <Property Name="Win" Hidden="true" />
-    </Members>
-    <Compartments>
-      <Compartment Name="Properties" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>EAAAAACAAAAAQAAJAEAAAQAgEAAAIBAAAIBABAABEAQ=</HashCode>
-      <FileName>MainWindowViewModels.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="DotNet.ViewModel.GraphViewModel">
     <Position X="3.5" Y="4.75" Width="2" />
     <Members>
@@ -67,7 +44,7 @@
       <Property Name="UnderlyingUniverse" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>QAAAAEAAAAAAAAAAAAABAAAAAAIAAAEEAAAEBAAABAA=</HashCode>
+      <HashCode>QAAAAEAAAAAAAAAAAAABAAAAAAAAAAEEAAAEBAAABAA=</HashCode>
       <FileName>ViewModel\UniverseViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -79,7 +56,6 @@
       <Field Name="hedge" Hidden="true" />
       <Property Name="Hedge" Hidden="true" />
       <Field Name="matrixCorrelation" Hidden="true" />
-      <Method Name="Method" Hidden="true" />
       <Field Name="payoff" Hidden="true" />
       <Property Name="Payoff" Hidden="true" />
       <Field Name="portfolio" Hidden="true" />
@@ -92,12 +68,9 @@
       <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>CAABAAgAAAAAAAAAAAAiEACAABAAgAAAQBYEAAACAAE=</HashCode>
+      <HashCode>CAABAAgAAAAAAAAAAAAAEACAABAAgAAAQBYEAAACAAE=</HashCode>
       <FileName>Models\Balancement.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Utilise" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="DotNet.Models.BDModel">
     <Position X="0.75" Y="8" Width="2.75" />
@@ -179,11 +152,10 @@
   <Class Name="DotNet.Models.Portfolio">
     <Position X="13.25" Y="2.75" Width="2.75" />
     <Members>
-      <Method Name="Method" Hidden="true" />
       <Method Name="Portfolio" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAgoAgAEQAAAAAAAAAAAAAAACAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAgIAgAEQAAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Models\Portfolio.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -196,6 +168,29 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAgEAAAABACAAAA=</HashCode>
       <FileName>Models\Universe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DotNet.MainWindowViewModels">
+    <Position X="6.25" Y="1" Width="2.25" />
+    <Members>
+      <Property Name="AvailableData" Hidden="true" />
+      <Property Name="AvailableOptions" Hidden="true" />
+      <Property Name="graphTest" Hidden="true" />
+      <Property Name="GraphTest" Hidden="true" />
+      <Property Name="SelectedClasses" Hidden="true" />
+      <Property Name="Simulation" Hidden="true" />
+      <Property Name="StartCommand" Hidden="true" />
+      <Field Name="tickerStarted" Hidden="true" />
+      <Property Name="TickerStarted" Hidden="true" />
+      <Property Name="UniverseVM" Hidden="true" />
+      <Property Name="Win" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAABCAAAAAQAAJAEAAAQAgEAAAIBAAAIBABAABEAQ=</HashCode>
+      <FileName>MainWindowViewModels.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
