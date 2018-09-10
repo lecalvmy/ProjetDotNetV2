@@ -45,7 +45,7 @@ namespace DotNet.Models
             SeriesCollection[1].Values = new ChartValues<double> { };
             Labels = new List<string> { };
 
-            for (int i = 1; i <= simulation.Balancement.Hedge.Count - 1; i++)
+            for (int i = 0; i <= simulation.Balancement.Hedge.Count - 1; i++)
             {
                 SeriesCollection[0].Values.Add(simulation.Balancement.PriceOption[i]);
                 SeriesCollection[1].Values.Add(Convert.ToDouble(simulation.Balancement.Hedge[i]));

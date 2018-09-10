@@ -44,7 +44,7 @@ namespace DotNet.Models
             priceOption = new List<double>();
             dates = new List<DateTime>();
             //PricingResults priceDelta = pricer.PriceCall(option, dateDebut, dataFeedProvider.NumberOfDaysPerYear, Convert.ToDouble(priceList[1].PriceList[option.UnderlyingShareIds[0]]), 0.25);
-            PricingResults priceDelta = PriceResults(option, priceList[1].PriceList, dateDebut, dataFeedProvider);
+            PricingResults priceDelta = PriceResults(option, priceList[0].PriceList, dateDebut, dataFeedProvider);
             Dictionary<string, double> compo = new Dictionary<string, double> { };
             int i = 0;
             foreach (string id in option.UnderlyingShareIds)
@@ -55,7 +55,7 @@ namespace DotNet.Models
 
             DateTime oldBalancement = dateDebut;
 
-            portfolio = new Portfolio(Convert.ToDecimal(priceDelta.Price), compo, priceList[1].PriceList);
+            portfolio = new Portfolio(Convert.ToDecimal(priceDelta.Price), compo, priceList[0].PriceList);
             priceOption.Add(priceDelta.Price);
             hedge.Add(portfolio.portfolioValue);
             dates.Add(priceList[0].Date);
